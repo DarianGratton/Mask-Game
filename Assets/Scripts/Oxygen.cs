@@ -8,6 +8,7 @@ public class Oxygen : MonoBehaviour
     public bool IS_LOSING_OXYGEN_ON_START = true;
 
     public Canvas DEATH_MESSAGE_CANVAS;
+    public GameManager GAME_MANAGER;
 
     [SerializeField]
     private float currentOxygen;
@@ -51,6 +52,8 @@ public class Oxygen : MonoBehaviour
         DEATH_MESSAGE_CANVAS.gameObject.SetActive(true);
         deathMessageTimer = DEATH_MESSAGE_DURATION;
         currentOxygen = MAX_OXYGEN;
+
+        GAME_MANAGER.Spawn();
     }
     
     public void StopLosingOxygen()
