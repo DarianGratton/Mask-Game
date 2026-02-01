@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
 
     public void ResetPlayer()
     {
+        playerSounds.PlayDeathSound();
         SpawnCorpse();
         StartCoroutine(MovePlayerToSpawn());
     }

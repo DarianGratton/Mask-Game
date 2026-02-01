@@ -3,6 +3,8 @@ using UnityEngine;
 public class DoorTrigger : MonoBehaviour
 {
     public GameObject door;
+    public PlayerSounds sound;
+    public bool isTentacle;
 
     public void OnTriggerEnter(Collider other)
     {
@@ -19,6 +21,10 @@ public class DoorTrigger : MonoBehaviour
                     inventory.useKey();
                     Debug.Log("Door Opened!");
 
+                    if (isTentacle)
+                        sound.PlayAttackSound();
+                    else
+                        sound.PlayDoorSound();
                 }
             }
             else

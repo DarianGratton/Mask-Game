@@ -56,10 +56,11 @@ namespace StarterAssets
 		    // Drag the child's component here in the Inspector
 
 		[SerializeField] GameManager gameManager;
+        public PlayerSounds sound;
 
 
-		// cinemachine
-		private float _cinemachineTargetPitch;
+        // cinemachine
+        private float _cinemachineTargetPitch;
 
 		// player
 		private float _speed;
@@ -240,11 +241,17 @@ namespace StarterAssets
 					_verticalVelocity = -2f;
 				}
 
+				if (_verticalVelocity < -2f)
+					sound.PlayLandSound();
+
 				// Jump
 				if (_input.jump && _jumpTimeoutDelta <= 0.0f)
 				{
 					// the square root of H * -2 * G = how much velocity needed to reach desired height
 					_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+
+					//add sound here
+					sound.PlayJumpSound();
 				}
 
 				// jump timeout
