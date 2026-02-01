@@ -14,6 +14,7 @@ namespace StarterAssets
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
 		public float MoveSpeed = 4.0f;
+
 		[Tooltip("Sprint speed of the character in m/s")]
 		public float SprintSpeed = 6.0f;
 		[Tooltip("Rotation speed of the character")]
@@ -51,6 +52,12 @@ namespace StarterAssets
 		[Tooltip("How far in degrees can you move the camera down")]
 		public float BottomClamp = -90.0f;
 
+
+		    // Drag the child's component here in the Inspector
+
+		[SerializeField] GameManager gameManager;
+
+
 		// cinemachine
 		private float _cinemachineTargetPitch;
 
@@ -64,9 +71,11 @@ namespace StarterAssets
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
-	
+		private float targetSpeed;
+
+
 #if ENABLE_INPUT_SYSTEM
-		private PlayerInput _playerInput;
+        private PlayerInput _playerInput;
 #endif
 		private CharacterController _controller;
 		private StarterAssetsInputs _input;
@@ -115,11 +124,13 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
+			checkDrop();
 		}
 
 		private void LateUpdate()
 		{
-			CameraRotation();
+			if (!gameManager.IsGamePaused())
+				CameraRotation();
 		}
 
 		private void GroundedCheck()
@@ -151,11 +162,27 @@ namespace StarterAssets
 			}
 		}
 
+		private void checkDrop()
+		{
+			if (_input.dropleftitem)
+			{
+				GetComponentInChildren<Inventory>().dropleftitem(2.0f);
+
+				_input.dropleftitem = false;
+			}
+
+			if (_input.droprightitem)
+			{
+				GetComponentInChildren<Inventory>().droprightitem(2.0f);
+				_input.droprightitem = false;
+			}
+		}
+
 		private void Move()
 		{
 			// set target speed based on move speed, sprint speed and if sprint is pressed
 			// float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
-			float targetSpeed = MoveSpeed;
+			targetSpeed = MoveSpeed;
 
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
@@ -196,7 +223,8 @@ namespace StarterAssets
 			}
 
 			// move the player
-			_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+			if (_controller.enabled)
+				_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 		}
 
 		private void JumpAndGravity()
@@ -245,6 +273,11 @@ namespace StarterAssets
 			{
 				_verticalVelocity += Gravity * Time.deltaTime;
 			}
+		}
+
+		public float GetTargetSpeed()
+		{
+			return targetSpeed;
 		}
 
 		private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
