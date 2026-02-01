@@ -15,7 +15,7 @@ public class DoorTrigger : MonoBehaviour
             {
                 if (door != null)
                 {
-                 //   Destroy(door);
+                    door.SetActive(false);
                     inventory.useKey();
                     Debug.Log("Door Opened!");
 
