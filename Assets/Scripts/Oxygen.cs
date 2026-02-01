@@ -30,9 +30,11 @@ public class Oxygen : MonoBehaviour
     {
         if (isLosingOxygen)
             currentOxygen -= Time.deltaTime * OXYGEN_LOSS_PER_SECOND;
-        
+
         if (currentOxygen <= 0)
+        {
             KillPlayer();
+        }
 
         if (deathMessageTimer > 0)
         {
@@ -53,7 +55,8 @@ public class Oxygen : MonoBehaviour
         deathMessageTimer = DEATH_MESSAGE_DURATION;
         currentOxygen = MAX_OXYGEN;
 
-        GAME_MANAGER.Spawn();
+        // Pause game
+        GAME_MANAGER.PauseGame();
     }
     
     public void StopLosingOxygen()
