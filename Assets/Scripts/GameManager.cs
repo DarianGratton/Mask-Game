@@ -22,19 +22,26 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Spawn();
+        SpawnPlayer();
     }
 
-    public void Spawn()
+    public void ResetPlayer()
+    {
+        SpawnCorpse();
+        SpawnPlayer();
+    }
+
+    public void SpawnPlayer()
     {
         Vector3 playerPosition = startingSpawn.transform.position;
-        playerPosition.y += spawnOffsetY;        
+        playerPosition.y += spawnOffsetY;       
         player.transform.position = playerPosition;
+        player.transform.rotation = Quaternion.identity;
     }
 
-    void SpawnCorpse()
+    public void SpawnCorpse()
     {
-        GameObject newCorpse = Instantiate(corpseObject, player.transform);
+        GameObject newCorpse = Instantiate(corpseObject, player.transform.localPosition, player.transform.rotation);
         if (playerCorpses.Count >= maxNumberOfCorpses)
         {
             GameObject playerCorpse = playerCorpses[0];
@@ -42,11 +49,5 @@ public class GameManager : MonoBehaviour
             Destroy(playerCorpse);
         }
         playerCorpses.Add(newCorpse);
-    }
-
-    void ResetPlayer()
-    {
-        Spawn();
-        SpawnCorpse();
     }
 }
