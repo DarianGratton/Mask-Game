@@ -66,9 +66,11 @@ namespace StarterAssets
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
-	
+		private float targetSpeed;
+
+
 #if ENABLE_INPUT_SYSTEM
-		private PlayerInput _playerInput;
+        private PlayerInput _playerInput;
 #endif
 		private CharacterController _controller;
 		private StarterAssetsInputs _input;
@@ -158,7 +160,7 @@ namespace StarterAssets
 		{
 			// set target speed based on move speed, sprint speed and if sprint is pressed
 			// float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
-			float targetSpeed = MoveSpeed;
+			targetSpeed = MoveSpeed;
 
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
@@ -249,6 +251,11 @@ namespace StarterAssets
 			{
 				_verticalVelocity += Gravity * Time.deltaTime;
 			}
+		}
+
+		public float GetTargetSpeed()
+		{
+			return targetSpeed;
 		}
 
 		private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
