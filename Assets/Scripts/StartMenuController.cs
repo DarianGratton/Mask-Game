@@ -6,7 +6,7 @@ public class StartMenuController : MonoBehaviour
     //Start button loads the scene
     public void OnStartClick()
     {
-        SceneManager.LoadScene("MylesScene");
+        SceneManager.LoadScene("MainScene");
     }
 
     //...or not button quits the application
