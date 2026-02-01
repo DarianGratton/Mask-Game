@@ -2915,6 +2915,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Key (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5335714562819071344, guid: 4e61404a1a296d84489ff6149cacf2af, type: 3}
+      propertyPath: m_TagString
+      value: WeakKey
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3963,7 +3967,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Oxygen
   MAX_OXYGEN: 100
-  OXYGEN_LOSS_PER_SECOND: 1
+  OXYGEN_LOSS_PER_SECOND: 0
   DEATH_MESSAGE_DURATION: 2
   IS_LOSING_OXYGEN_ON_START: 1
   DEATH_MESSAGE_CANVAS: {fileID: 1557715478}
@@ -4581,6 +4585,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4126186915591731361, guid: 63d0e0471b58efa4590d625c1238b768, type: 3}
+      propertyPath: keyTag
+      value: WeakKey
+      objectReference: {fileID: 0}
     - target: {fileID: 7235061757902818629, guid: 63d0e0471b58efa4590d625c1238b768, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -4637,6 +4645,10 @@ PrefabInstance:
       propertyPath: endGame
       value: 
       objectReference: {fileID: 1314324378}
+    - target: {fileID: 5555258328233683374, guid: 21c09817858e1474380702b45b85b031, type: 3}
+      propertyPath: endGameCanvas
+      value: 
+      objectReference: {fileID: 1557715478}
     - target: {fileID: 7214380851777317355, guid: 21c09817858e1474380702b45b85b031, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4

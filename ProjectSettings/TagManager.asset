@@ -9,6 +9,7 @@ TagManager:
   - Ground
   - Key
   - KeyCard
+  - WeakKey
   layers:
   - Default
   - TransparentFX
