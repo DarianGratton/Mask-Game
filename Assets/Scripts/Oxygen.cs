@@ -56,7 +56,7 @@ public class Oxygen : MonoBehaviour
         deathMessageTimer = DEATH_MESSAGE_DURATION;
         currentOxygen = MAX_OXYGEN;
 
-        PLAYER_SOUNDS.ResetPlayerSounds();
+        PLAYER_SOUNDS.KillPlayerSounds();
 
         // Pause game
         GAME_MANAGER.PauseGame();

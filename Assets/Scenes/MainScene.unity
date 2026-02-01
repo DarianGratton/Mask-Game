@@ -4432,6 +4432,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1869494927849329274, guid: 97167bc7207c6c149b65786bc5f3cc9c, type: 3}
     - target: {fileID: 8162470530537895999, guid: 5b8aa5cdd24e2524aa5bca1013ae4a3f, type: 3}
+      propertyPath: playerSounds
+      value: 
+      objectReference: {fileID: 1020324985}
+    - target: {fileID: 8162470530537895999, guid: 5b8aa5cdd24e2524aa5bca1013ae4a3f, type: 3}
       propertyPath: startingSpawn
       value: 
       objectReference: {fileID: 2113720225}
@@ -4636,6 +4640,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5555258328233683374, guid: 21c09817858e1474380702b45b85b031, type: 3}
       propertyPath: endGame
+      value: 
+      objectReference: {fileID: 1314324378}
+    - target: {fileID: 5555258328233683374, guid: 21c09817858e1474380702b45b85b031, type: 3}
+      propertyPath: endGameCanvas
       value: 
       objectReference: {fileID: 1314324378}
     - target: {fileID: 7214380851777317355, guid: 21c09817858e1474380702b45b85b031, type: 3}

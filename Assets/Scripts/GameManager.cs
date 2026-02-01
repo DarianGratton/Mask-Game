@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] int maxNumberOfCorpses = 5;
     List<GameObject> playerCorpses = new List<GameObject>();
 
+    public PlayerSounds playerSounds;
+
     private bool isPaused = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -89,7 +91,7 @@ public class GameManager : MonoBehaviour
         
         playerController.enabled = true;
 
-
+        playerSounds.StartPlayerSounds();
     }
 
     void SpawnCorpse()
