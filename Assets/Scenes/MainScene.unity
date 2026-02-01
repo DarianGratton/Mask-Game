@@ -3963,11 +3963,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Oxygen
   MAX_OXYGEN: 100
-  OXYGEN_LOSS_PER_SECOND: 1
+  OXYGEN_LOSS_PER_SECOND: 10
   DEATH_MESSAGE_DURATION: 2
   IS_LOSING_OXYGEN_ON_START: 1
   DEATH_MESSAGE_CANVAS: {fileID: 1557715478}
   GAME_MANAGER: {fileID: 537260534}
+  PLAYER_SOUNDS: {fileID: 1020324985}
   currentOxygen: 0
   deathMessageTimer: 0
 --- !u!114 &1344375818 stripped

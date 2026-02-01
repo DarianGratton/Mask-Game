@@ -69,4 +69,16 @@ public class PlayerSounds : MonoBehaviour
 
         stepSoundPlaying = false;
     }
+
+    public void ResetPlayerSounds()
+    {
+        lowOxygen = false;
+
+        breathingSource.Stop();
+        breathingSource.clip = breathingSounds[0];
+        breathingSource.Play();
+        heartbeatSource.Stop();
+        heartbeatSource.clip = heartbeatSounds[0];
+        heartbeatSource.Play();
+    }
 }
