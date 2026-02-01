@@ -52,13 +52,7 @@ namespace StarterAssets
 		[Tooltip("How far in degrees can you move the camera down")]
 		public float BottomClamp = -90.0f;
 
-<<<<<<< HEAD
 		[Header("Game")]
-=======
-
-		    // Drag the child's component here in the Inspector
-
->>>>>>> Kent
 		[SerializeField] GameManager gameManager;
 		[SerializeField] Oxygen killScript;
 		[SerializeField] float maxVelocityBeforeDeath = -10.0f;

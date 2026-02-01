@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [Header("References")]
     [SerializeField] GameObject player;
     [SerializeField] Canvas deathCanvas;
+    [SerializeField] Oxygen oxygenScript;
 
     [Header("Spawn")]
     [SerializeField] GameObject startingSpawn;
@@ -62,6 +63,7 @@ public class GameManager : MonoBehaviour
     {
         SpawnCorpse();
         StartCoroutine(MovePlayerToSpawn());
+        oxygenScript.ResetOxygen();
     }
 
     IEnumerator MovePlayerToSpawn()
