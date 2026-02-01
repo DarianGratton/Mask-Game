@@ -14,6 +14,7 @@ namespace StarterAssets
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
 		public float MoveSpeed = 4.0f;
+
 		[Tooltip("Sprint speed of the character in m/s")]
 		public float SprintSpeed = 6.0f;
 		[Tooltip("Rotation speed of the character")]
@@ -50,6 +51,8 @@ namespace StarterAssets
 		public float TopClamp = 90.0f;
 		[Tooltip("How far in degrees can you move the camera down")]
 		public float BottomClamp = -90.0f;
+
+		    // Drag the child's component here in the Inspector
 
 		// cinemachine
 		private float _cinemachineTargetPitch;
@@ -115,6 +118,7 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
+			checkDrop();
 		}
 
 		private void LateUpdate()
@@ -148,6 +152,22 @@ namespace StarterAssets
 
 				// rotate the player left and right
 				transform.Rotate(Vector3.up * _rotationVelocity);
+			}
+		}
+
+		private void checkDrop()
+		{
+			if (_input.dropleftitem)
+			{
+				GetComponentInChildren<Inventory>().dropleftitem(2.0f);
+
+				_input.dropleftitem = false;
+			}
+
+			if (_input.droprightitem)
+			{
+				GetComponentInChildren<Inventory>().droprightitem(2.0f);
+				_input.droprightitem = false;
 			}
 		}
 

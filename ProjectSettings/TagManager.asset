@@ -8,6 +8,7 @@ TagManager:
   - Hinge
   - Ground
   - Key
+  - KeyCard
   layers:
   - Default
   - TransparentFX

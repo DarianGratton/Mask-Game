@@ -3,19 +3,22 @@ using System.Collections;
 
 public class EndGameButton : MonoBehaviour
 {
-    public Canvas endGame;
+    public Canvas endGameCanvas;
 
-    private void OnTriggerEnter(Collider playerCharacter)
+
+
+    public void endGame()
     {
-        endGame.gameObject.SetActive(true);
+        endGameCanvas.gameObject.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         Debug.Log("Contact made");
-        
     }
+
+        
     public void Start()
     {
-        endGame.gameObject.SetActive(false);
+        endGameCanvas.gameObject.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = false;
     }
