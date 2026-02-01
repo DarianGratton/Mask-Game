@@ -42,11 +42,11 @@ public class Inventory : MonoBehaviour
             Debug.Log("You have dropped " + item.name);
         }
     }
-    public void useKey()
+    public void useKey(string keyTag)
     {
         for(int i = 0; i < 2; i++)
         {
-            if (inventory[i] != null && inventory[i].CompareTag("Key"))
+            if (inventory[i] != null && inventory[i].CompareTag(keyTag))
             {
                 inventory[i] = null;
                 Debug.Log("The key has been used");
@@ -91,11 +91,11 @@ public class Inventory : MonoBehaviour
             Debug.Log("Your Inventory is Full");
         }
     }
-    public bool HasKey()
+    public bool HasKey(string keyTag)
     {
         foreach (GameObject item in inventory)
         {
-            if(item != null && item.CompareTag("Key"))
+            if(item != null && item.CompareTag(keyTag))
             {
                 return true;
             }
