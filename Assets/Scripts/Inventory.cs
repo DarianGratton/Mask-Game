@@ -9,13 +9,14 @@ public class Inventory : MonoBehaviour
 
 
 
-    public void dropleftitem(float offset)
+    public void dropleftitem(float offset, Transform playerTransform = null)
     {
+        playerTransform = transform;
         GameObject item = inventory[0];
         if(item != null)
         {
             item.SetActive(true);
-            Vector3 dropPosition = transform.position + (transform.forward * offset);
+            Vector3 dropPosition = playerTransform.position + (playerTransform.forward * offset);
         
             item.transform.position = dropPosition;
             
@@ -25,13 +26,15 @@ public class Inventory : MonoBehaviour
     
     }
 
-    public void droprightitem(float offset)
+    public void droprightitem(float offset, Transform playerTransform = null)
     {
+        playerTransform = transform;
         GameObject item = inventory[1];
+
         if(item != null)
         {
             item.SetActive(true);
-            Vector3 dropPosition = transform.position + (transform.forward * offset);
+            Vector3 dropPosition = playerTransform.position + (playerTransform.forward * offset);
         
             item.transform.position = dropPosition;
             
