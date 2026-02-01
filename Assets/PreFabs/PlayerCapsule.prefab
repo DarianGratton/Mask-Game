@@ -89,10 +89,11 @@ MonoBehaviour:
   GroundedRadius: 0.5
   GroundLayers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 9
   CinemachineCameraTarget: {fileID: 8818509906124920615}
   TopClamp: 89
   BottomClamp: -89
+  gameManager: {fileID: 0}
 --- !u!114 &2391577083278067975
 MonoBehaviour:
   m_ObjectHideFlags: 0

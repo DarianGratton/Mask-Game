@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class CollectItemCollision : MonoBehaviour
 {
+    public PlayerSounds sound;
+
     void OnCollisionEnter(Collision collisionInfo)
     {
         Inventory inventory = collisionInfo.gameObject.GetComponent<Inventory>();
@@ -12,6 +14,8 @@ public class CollectItemCollision : MonoBehaviour
         {
             inventory.addItem(this.gameObject);
             this.gameObject.SetActive(false);
+
+            sound.PlayPickupSound();
         }
         else
         {

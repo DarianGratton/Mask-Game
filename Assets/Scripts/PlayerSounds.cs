@@ -6,8 +6,9 @@ using UnityEngine.Audio;
 
 public class PlayerSounds : MonoBehaviour
 {
-    public AudioSource stepsSource, heartbeatSource, breathingSource;
+    public AudioSource stepsSource, heartbeatSource, breathingSource, interactionSource, doorSource, actionSource;
     public List<AudioClip> stepSounds, heartbeatSounds, breathingSounds;
+    public AudioClip itemPickupSound, doorKeyUseSound, doorOpenSound, jumpSound, landSound, deathSound, attackSound, tentacleSound;
     public FirstPersonController playerController;
     public Oxygen oxygen;
     public float panicOxygenPercent = 50f;
@@ -22,6 +23,8 @@ public class PlayerSounds : MonoBehaviour
         stepsSource.loop = false;
         heartbeatSource.loop = true;
         breathingSource.loop = true;
+
+        interactionSource.loop = false;
 
         StartPlayerSounds();
     }
@@ -84,5 +87,47 @@ public class PlayerSounds : MonoBehaviour
 
         breathingSource.Stop();
         heartbeatSource.Stop();
+    }
+
+    public void PlayPickupSound()
+    {
+        interactionSource.clip = itemPickupSound;
+        interactionSource.Play();
+    }
+
+    public void PlayDoorSound()
+    {
+        interactionSource.clip = doorKeyUseSound;
+        interactionSource.Play();
+        doorSource.clip = doorOpenSound;
+        doorSource.Play();
+    }
+
+    public void PlayJumpSound()
+    {
+        actionSource.clip = jumpSound;
+        if (actionSource.isPlaying)
+            return;
+        actionSource.Play();
+    }
+
+    public void PlayLandSound()
+    {
+        actionSource.clip = landSound;
+        actionSource.Play();
+    }
+
+    public void PlayDeathSound()
+    {
+        actionSource.clip = deathSound;
+        actionSource.Play();
+    }
+
+    public void PlayAttackSound()
+    {
+        interactionSource.clip = attackSound;
+        interactionSource.Play();
+        doorSource.clip = tentacleSound;
+        doorSource.Play();
     }
 }

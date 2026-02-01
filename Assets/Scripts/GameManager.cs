@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [Header("References")]
     [SerializeField] GameObject player;
     [SerializeField] Canvas deathCanvas;
+    [SerializeField] Oxygen oxygenScript;
 
     [Header("Spawn")]
     [SerializeField] GameObject startingSpawn;
@@ -62,8 +63,10 @@ public class GameManager : MonoBehaviour
 
     public void ResetPlayer()
     {
+        playerSounds.PlayDeathSound();
         SpawnCorpse();
         StartCoroutine(MovePlayerToSpawn());
+        oxygenScript.ResetOxygen();
     }
 
     IEnumerator MovePlayerToSpawn()
@@ -85,6 +88,7 @@ public class GameManager : MonoBehaviour
 
         Rigidbody playerBody = player.GetComponentInChildren<Rigidbody>();
         playerBody.position = new Vector3(0,0,0);
+        playerBody.linearVelocity = new Vector3(0,0,0);
 
         yield return new WaitForEndOfFrame();
 
@@ -96,7 +100,16 @@ public class GameManager : MonoBehaviour
 
     void SpawnCorpse()
     {
-        GameObject newCorpse = Instantiate(corpseObject, player.transform.position, Quaternion.identity);
+        Vector3 spawnPosition = player.transform.position;
+
+        // Adjust y if the player is in the air
+        RaycastHit hit;
+        if (Physics.Raycast(player.transform.position, Vector3.down, out hit, 3, LayerMask.GetMask("Ground")))
+        {
+            spawnPosition.y -= hit.distance - 0.1f;
+        }
+
+        GameObject newCorpse = Instantiate(corpseObject, spawnPosition, Quaternion.identity);
         if (playerCorpses.Count >= maxNumberOfCorpses)
         {
             GameObject playerCorpse = playerCorpses[0];

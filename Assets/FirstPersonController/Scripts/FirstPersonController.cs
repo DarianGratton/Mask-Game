@@ -52,20 +52,21 @@ namespace StarterAssets
 		[Tooltip("How far in degrees can you move the camera down")]
 		public float BottomClamp = -90.0f;
 
-
-		    // Drag the child's component here in the Inspector
-
+		[Header("Game")]
 		[SerializeField] GameManager gameManager;
+    public PlayerSounds sound;
+		[SerializeField] Oxygen killScript;
+		[SerializeField] float maxVelocityBeforeDeath = -10.0f;
 
 
-		// cinemachine
-		private float _cinemachineTargetPitch;
+        // cinemachine
+        private float _cinemachineTargetPitch;
 
 		// player
 		private float _speed;
 		private float _rotationVelocity;
 		private float _verticalVelocity;
-		private float _terminalVelocity = 53.0f;
+		private float _terminalVelocity = -53.0f;
 
 		// timeout deltatime
 		private float _jumpTimeoutDelta;
@@ -121,6 +122,9 @@ namespace StarterAssets
 
 		private void Update()
 		{
+			if (gameManager.IsGamePaused())
+				return;
+
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
@@ -223,16 +227,22 @@ namespace StarterAssets
 			}
 
 			// move the player
-			if (_controller.enabled)
-				_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+			_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 		}
 
 		private void JumpAndGravity()
 		{
 			if (Grounded)
 			{
-				// reset the fall timeout timer
-				_fallTimeoutDelta = FallTimeout;
+                // Kill player if velocity is too high (Gravity is negative).
+                if (_verticalVelocity < maxVelocityBeforeDeath)
+                {
+                    _verticalVelocity = 0f;
+                    killScript.KillPlayer();
+                }
+
+                // reset the fall timeout timer
+                _fallTimeoutDelta = FallTimeout;
 
 				// stop our velocity dropping infinitely when grounded
 				if (_verticalVelocity < 0.0f)
@@ -240,11 +250,17 @@ namespace StarterAssets
 					_verticalVelocity = -2f;
 				}
 
+				if (_verticalVelocity < -2f)
+					sound.PlayLandSound();
+
 				// Jump
 				if (_input.jump && _jumpTimeoutDelta <= 0.0f)
 				{
 					// the square root of H * -2 * G = how much velocity needed to reach desired height
 					_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+
+					//add sound here
+					sound.PlayJumpSound();
 				}
 
 				// jump timeout
@@ -269,7 +285,7 @@ namespace StarterAssets
 			}
 
 			// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
-			if (_verticalVelocity < _terminalVelocity)
+			if (_verticalVelocity >= _terminalVelocity)
 			{
 				_verticalVelocity += Gravity * Time.deltaTime;
 			}
@@ -297,6 +313,11 @@ namespace StarterAssets
 
 			// when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
 			Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
+		}
+
+		public void ResetVelocity()
+		{
+			_verticalVelocity = 0.0f;
 		}
 	}
 }
