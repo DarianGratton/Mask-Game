@@ -29,7 +29,7 @@ public class OxygenGauge : MonoBehaviour
 
         Vector3 circlePos = circleTransform.position;
         circlePos.x = oxygenPercent * initalCirclePos + 20;
-        Debug.Log(circlePos.x);
+        // Debug.Log(circlePos.x);
         circleTransform.position = circlePos;
     }
 }
