@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 36239657921270930}
   - component: {fileID: 258331853668403115}
   - component: {fileID: 4713349476187634587}
+  - component: {fileID: -6593204758248496153}
   m_Layer: 0
   m_Name: Key
   m_TagString: Key
@@ -125,4 +126,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78dadba58e0e19c4eb65d4720f4c47dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCollision
-  DoorManager: {fileID: 0}
+--- !u!114 &-6593204758248496153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5335714562819071344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a81e6cc702ad2e54c957df4b31394fd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HudSprite
+  hudSprite: {fileID: 0}
