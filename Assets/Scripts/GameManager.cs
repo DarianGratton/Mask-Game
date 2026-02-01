@@ -1,11 +1,7 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Rendering;
 using UnityEngine;
-
-struct PlayerCorpse
-{
-    Vector3 transform;
-    GameObject corpseObject;
-}
 
 public class GameManager : MonoBehaviour
 {
@@ -18,7 +14,10 @@ public class GameManager : MonoBehaviour
     float spawnOffsetY;
 
     // Corpses
-    List<PlayerCorpse> playerCorpse = new List<PlayerCorpse>(); 
+    [Header("Corpse Persistence")]
+    [SerializeField] GameObject corpseObject;
+    [SerializeField] int maxNumberOfCorpses = 5;
+    List<GameObject> playerCorpses = new List<GameObject>(); 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,5 +32,21 @@ public class GameManager : MonoBehaviour
         player.transform.position = playerPosition;
     }
 
+    void SpawnCorpse()
+    {
+        GameObject newCorpse = Instantiate(corpseObject, player.transform);
+        if (playerCorpses.Count >= maxNumberOfCorpses)
+        {
+            GameObject playerCorpse = playerCorpses[0];
+            playerCorpses.RemoveAt(0);
+            Destroy(playerCorpse);
+        }
+        playerCorpses.Add(newCorpse);
+    }
 
+    void ResetPlayer()
+    {
+        Spawn();
+        SpawnCorpse();
+    }
 }
