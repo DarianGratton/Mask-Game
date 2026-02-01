@@ -30,9 +30,11 @@ public class Oxygen : MonoBehaviour
     {
         if (isLosingOxygen)
             currentOxygen -= Time.deltaTime * OXYGEN_LOSS_PER_SECOND;
-        
+
         if (currentOxygen <= 0)
+        {
             KillPlayer();
+        }
 
         if (deathMessageTimer > 0)
         {
@@ -52,6 +54,8 @@ public class Oxygen : MonoBehaviour
         DEATH_MESSAGE_CANVAS.gameObject.SetActive(true);
         deathMessageTimer = DEATH_MESSAGE_DURATION;
         currentOxygen = MAX_OXYGEN;
+        Time.timeScale = 0; // Pause Game
+        Cursor.visible = true;
 
         // Reset player position and spawn corpse.
         GAME_MANAGER.ResetPlayer();
