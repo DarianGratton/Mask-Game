@@ -30,12 +30,12 @@ public class PlayerSounds : MonoBehaviour
     void Update()
     {
         //If the player started moving recently, start playing walking sounds
-        if (!stepSoundPlaying && playerController.GetTargetSpeed() > 0.1f)
+        if (!stepSoundPlaying && playerController.GetTargetSpeed() > 0.1f && playerController.Grounded)
         {
             StartCoroutine(PlayRandomFootstepLoop());
             stepSoundPlaying = true;
         } //If player stopped moving recently stop the walking sounds
-        else if (stepSoundPlaying && playerController.GetTargetSpeed() < 0.1f)
+        else if (stepSoundPlaying && (playerController.GetTargetSpeed() < 0.1f || !playerController.Grounded))
         {
             stepSoundPlaying = false;
         }
@@ -54,7 +54,7 @@ public class PlayerSounds : MonoBehaviour
 
     IEnumerator PlayRandomFootstepLoop()
     {
-        while (playerController.GetTargetSpeed() > 0.1f && !died) // Infinite loop while walking
+        while (playerController.GetTargetSpeed() > 0.1f && playerController.Grounded && !died) // Infinite loop while walking on the ground
         {
             // Select a random clip and play it
             stepsSource.clip = stepSounds[Random.Range(0, stepSounds.Count)];
