@@ -97,3 +97,6 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+Assets/PreFabs/EndScreenCanvas.prefab.meta
+Assets/PreFabs/EndScreenCanvas.prefab
+Assets/PreFabs/EndScreenCanvas.prefab.meta
