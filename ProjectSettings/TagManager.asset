@@ -9,6 +9,8 @@ TagManager:
   - Ground
   - Key
   - DeathPlane
+  - KeyCard
+  - WeakKey
   layers:
   - Default
   - TransparentFX

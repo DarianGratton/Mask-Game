@@ -4,6 +4,8 @@ public class DoorTrigger : MonoBehaviour
 {
     public GameObject door;
 
+    public string keyTag = "Key";
+
     public void OnTriggerEnter(Collider other)
     {
         // Try to find the Inventory on the object that entered the trigger
@@ -11,12 +13,12 @@ public class DoorTrigger : MonoBehaviour
 
         if (inventory != null)
         {
-            if (inventory.HasKey())
+            if (inventory.HasKey(keyTag))
             {
                 if (door != null)
                 {
-                 //   Destroy(door);
-                    inventory.useKey();
+                    door.SetActive(false);
+                    inventory.useKey(keyTag);
                     Debug.Log("Door Opened!");
 
                 }

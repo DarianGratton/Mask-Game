@@ -66,13 +66,20 @@ public class GameManager : MonoBehaviour
 
     IEnumerator MovePlayerToSpawn()
     {
+        Inventory playerInventory = player.GetComponentInChildren<Inventory>();
         CharacterController playerController = player.GetComponent<CharacterController>();
         playerController.enabled = false;
+
+        Transform deathPosition = player.transform;
+        playerInventory.dropleftitem(-0.5f, deathPosition);
+        playerInventory.droprightitem(0.5f, deathPosition);
 
         Vector3 spawnPosition = startingSpawn.transform.position;
         spawnPosition.y += spawnOffsetY;
         player.transform.position = spawnPosition;
         player.transform.rotation = Quaternion.identity;
+
+
 
         Rigidbody playerBody = player.GetComponentInChildren<Rigidbody>();
         playerBody.position = new Vector3(0,0,0);
@@ -80,7 +87,10 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForEndOfFrame();
 
+        
         playerController.enabled = true;
+
+
     }
 
     void SpawnCorpse()

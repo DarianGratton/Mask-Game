@@ -1,14 +1,69 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 public class Inventory : MonoBehaviour
 {
     public GameObject[] inventory = new GameObject[2];
 
-    public void useKey()
+
+
+
+
+    public void dropleftitem(float offset, Transform dropTransform = null)
+    {
+        Vector3 dropPosition;
+        GameObject item = inventory[0];
+        if(item != null)
+        {
+            item.SetActive(true);
+            if(dropTransform == null)
+            {
+                dropTransform = transform;
+                dropPosition = dropTransform.position + (dropTransform.forward * offset);
+            }
+            else
+            {
+                dropPosition = new Vector3(dropTransform.position.x, dropTransform.position.y + 1.0f, dropTransform.position.z);
+            }
+
+
+            
+        
+            item.transform.position = dropPosition;
+            
+            inventory[0] = null;
+            Debug.Log("You have dropped " + item.name);
+        }
+    
+    }
+
+    public void droprightitem(float offset, Transform dropTransform = null)
+    {
+        Vector3 dropPosition;
+        GameObject item = inventory[1];
+        if(item != null)
+        {
+            item.SetActive(true);
+            if(dropTransform == null)
+            {
+                dropTransform = transform;
+                dropPosition = dropTransform.position + (dropTransform.forward * offset);
+            }
+            else
+            {
+                dropPosition = new Vector3(dropTransform.position.x, dropTransform.position.y + 1.0f, dropTransform.position.z);
+            }
+            item.transform.position = dropPosition;
+            
+            inventory[1] = null;
+            Debug.Log("You have dropped " + item.name);
+        }
+    }
+    public void useKey(string keyTag)
     {
         for(int i = 0; i < 2; i++)
         {
-            if (inventory[i] != null && inventory[i].CompareTag("Key"))
+            if (inventory[i] != null && inventory[i].CompareTag(keyTag))
             {
                 inventory[i] = null;
                 Debug.Log("The key has been used");
@@ -16,6 +71,28 @@ public class Inventory : MonoBehaviour
             }
         }
 
+    }
+
+    public GameObject useKeyCard()
+    {
+        for(int i = 0; i < 2; i++)
+        {
+            Debug.Log("inventory[i] is equal to this value: " + inventory[i]);
+            if (inventory[i] != null && inventory[i].CompareTag("KeyCard"))
+            {
+                GameObject keyCardUsed = inventory[i];
+
+                Debug.Log("keyCardUSed is equal to this value: " + keyCardUsed);
+
+            
+                inventory[i] = null;
+                Debug.Log("The key card has been used");
+                return keyCardUsed;
+
+
+            }
+        }
+        return null;
     }
 
     public void addItem(GameObject item)
@@ -31,11 +108,23 @@ public class Inventory : MonoBehaviour
             Debug.Log("Your Inventory is Full");
         }
     }
-    public bool HasKey()
+    public bool HasKey(string keyTag)
     {
         foreach (GameObject item in inventory)
         {
-            if(item != null && item.CompareTag("Key"))
+            if(item != null && item.CompareTag(keyTag))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public bool hasKeyCard()
+    {
+        foreach (GameObject item in inventory)
+        {
+            if(item != null && item.CompareTag("KeyCard"))
             {
                 return true;
             }
