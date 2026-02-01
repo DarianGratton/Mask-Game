@@ -179,6 +179,10 @@ PrefabInstance:
       propertyPath: DEATH_MESSAGE_CANVAS
       value: 
       objectReference: {fileID: 915748408}
+    - target: {fileID: 6647530487195879332, guid: 3c40f3100b6ff614cadfe23d498208c0, type: 3}
+      propertyPath: OXYGEN_LOSS_PER_SECOND
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -396,7 +400,7 @@ PrefabInstance:
     - target: {fileID: 7748389776565986759, guid: 52ece64143defe1489dc4cf1aad17443, type: 3}
       propertyPath: oxygenTracker
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2034467627}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -811,6 +815,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 538fd2c538277c846bc8f50a20248fab, type: 3}
+--- !u!1 &2034467626 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5565925670709774598, guid: 3c40f3100b6ff614cadfe23d498208c0, type: 3}
+  m_PrefabInstance: {fileID: 166123439}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2034467627 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6647530487195879332, guid: 3c40f3100b6ff614cadfe23d498208c0, type: 3}
+  m_PrefabInstance: {fileID: 166123439}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034467626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf87fa1934f33e744b5d45b1aa15a9b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Oxygen
 --- !u!1 &2111129385
 GameObject:
   m_ObjectHideFlags: 0
@@ -1050,11 +1070,11 @@ PrefabInstance:
     - target: {fileID: 3017885412616188766, guid: 621cfdf312d43c14fa7b8cc796863625, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2034467626}
     - target: {fileID: 3017885412616188766, guid: 621cfdf312d43c14fa7b8cc796863625, type: 3}
       propertyPath: corpseObject
       value: 
-      objectReference: {fileID: 396680703}
+      objectReference: {fileID: 1869494927849329274, guid: 97167bc7207c6c149b65786bc5f3cc9c, type: 3}
     - target: {fileID: 3017885412616188766, guid: 621cfdf312d43c14fa7b8cc796863625, type: 3}
       propertyPath: startingSpawn
       value: 

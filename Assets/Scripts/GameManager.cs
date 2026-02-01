@@ -1,4 +1,6 @@
+using JetBrains.Rider.Unity.Editor;
 using System.Collections.Generic;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
@@ -19,32 +21,39 @@ public class GameManager : MonoBehaviour
     [SerializeField] int maxNumberOfCorpses = 5;
     List<GameObject> playerCorpses = new List<GameObject>();
 
-    private Vector3 startingSpawnPos;
+    // private IEnumerator spawnCoroutine;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //SpawnPlayer();
-
-        startingSpawnPos = startingSpawn.transform.position;
-        startingSpawnPos.y += spawnOffsetY;
+        
     }
 
     public void ResetPlayer()
     {
         SpawnCorpse();
-        SpawnPlayer();
+        StartCoroutine(MovePlayerToSpawn());
     }
 
-    public void SpawnPlayer()
+    IEnumerator MovePlayerToSpawn()
     {
+        CharacterController playerController = player.GetComponent<CharacterController>();
+        playerController.enabled = false;
+
         Vector3 spawnPosition = startingSpawn.transform.position;
-        spawnPosition.y += spawnOffsetY;       
-        player.transform.position = startingSpawnPos;
+        spawnPosition.y += spawnOffsetY;
+        player.transform.position = spawnPosition;
         player.transform.rotation = Quaternion.identity;
+
+        Rigidbody playerBody = player.GetComponentInChildren<Rigidbody>();
+        playerBody.position = new Vector3(0,0,0);
+
+        yield return new WaitForEndOfFrame();
+
+        playerController.enabled = true;
     }
 
-    public void SpawnCorpse()
+    void SpawnCorpse()
     {
         GameObject newCorpse = Instantiate(corpseObject, player.transform.position, Quaternion.identity);
         if (playerCorpses.Count >= maxNumberOfCorpses)

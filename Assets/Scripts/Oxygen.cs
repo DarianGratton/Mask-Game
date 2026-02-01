@@ -54,8 +54,6 @@ public class Oxygen : MonoBehaviour
         DEATH_MESSAGE_CANVAS.gameObject.SetActive(true);
         deathMessageTimer = DEATH_MESSAGE_DURATION;
         currentOxygen = MAX_OXYGEN;
-        Time.timeScale = 0; // Pause Game
-        Cursor.visible = true;
 
         // Reset player position and spawn corpse.
         GAME_MANAGER.ResetPlayer();
