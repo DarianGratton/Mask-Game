@@ -7,7 +7,7 @@ public class EndScreen : MonoBehaviour
     //restart the program
     public void Restart()
     {
-        SceneManager.LoadScene("MylesScene");
+        SceneManager.LoadScene("MainScene");
     }
 
     // Quit the program
