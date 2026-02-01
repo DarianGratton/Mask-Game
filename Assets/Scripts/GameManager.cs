@@ -84,7 +84,16 @@ public class GameManager : MonoBehaviour
 
     void SpawnCorpse()
     {
-        GameObject newCorpse = Instantiate(corpseObject, player.transform.position, Quaternion.identity);
+        Vector3 spawnPosition = player.transform.position;
+
+        // Adjust y if the player is in the air
+        RaycastHit hit;
+        if (Physics.Raycast(player.transform.position, Vector3.down, out hit, 3, LayerMask.GetMask("Ground")))
+        {
+            spawnPosition.y -= hit.distance - 0.1f;
+        }
+
+        GameObject newCorpse = Instantiate(corpseObject, spawnPosition, Quaternion.identity);
         if (playerCorpses.Count >= maxNumberOfCorpses)
         {
             GameObject playerCorpse = playerCorpses[0];

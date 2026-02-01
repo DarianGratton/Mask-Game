@@ -187,6 +187,10 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1217427064}
+    - target: {fileID: 8575605230356883122, guid: 3c40f3100b6ff614cadfe23d498208c0, type: 3}
+      propertyPath: GroundLayers.m_Bits
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 917622652133315328, guid: 3c40f3100b6ff614cadfe23d498208c0, type: 3}
@@ -727,7 +731,7 @@ Transform:
   m_GameObject: {fileID: 1092145589}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.2, y: 0.51, z: 7.82}
+  m_LocalPosition: {x: -0.63, y: 2.9, z: 4.59}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -745,6 +749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 555cae1928d370c468b53749f61c17aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DeathPlane
+  killScript: {fileID: 2034467627}
 --- !u!1 &1203703311
 GameObject:
   m_ObjectHideFlags: 0
@@ -757,7 +762,7 @@ GameObject:
   - component: {fileID: 1203703314}
   - component: {fileID: 1203703313}
   - component: {fileID: 1203703312}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
