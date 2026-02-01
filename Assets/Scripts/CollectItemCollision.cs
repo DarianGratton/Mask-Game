@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class CollectItemCollision : MonoBehaviour
 {
-    public GameObject DoorManager;
     void OnCollisionEnter(Collision collisionInfo)
     {
         Inventory inventory = collisionInfo.gameObject.GetComponent<Inventory>();

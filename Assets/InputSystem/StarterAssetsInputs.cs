@@ -12,6 +12,8 @@ namespace StarterAssets
 		public Vector2 look;
 		public bool jump;
 		public bool sprint;
+		public bool droprightitem;
+		public bool dropleftitem;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -43,6 +45,16 @@ namespace StarterAssets
 		{
 			SprintInput(value.isPressed);
 		}
+
+		public void OnDropRightItem(InputValue value)
+		{
+			DropRightItemInput(value.isPressed);
+		}
+
+		public void OnDropLeftItem(InputValue value)
+		{
+			DropLeftItemInput(value.isPressed);
+		}
 #endif
 
 
@@ -64,6 +76,15 @@ namespace StarterAssets
 		public void SprintInput(bool newSprintState)
 		{
 			sprint = newSprintState;
+		}
+		public void DropRightItemInput(bool newDropRightItemState)
+		{
+			droprightitem = newDropRightItemState;
+		}
+
+		public void DropLeftItemInput(bool newDropLeftItemState)
+		{
+			dropleftitem = newDropLeftItemState;
 		}
 		
 		private void OnApplicationFocus(bool hasFocus)
