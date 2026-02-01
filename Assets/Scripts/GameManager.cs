@@ -4,11 +4,13 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] GameObject player;
+    [SerializeField] Canvas deathCanvas;
 
     [Header("Spawn")]
     [SerializeField] GameObject startingSpawn;
@@ -21,12 +23,39 @@ public class GameManager : MonoBehaviour
     [SerializeField] int maxNumberOfCorpses = 5;
     List<GameObject> playerCorpses = new List<GameObject>();
 
-    // private IEnumerator spawnCoroutine;
+    private bool isPaused = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         
+    }
+
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void PauseGame()
+    {
+        player.SetActive(false);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        isPaused = true;
+    }
+
+    public void UnpauseGame()
+    {
+        player.SetActive(true);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        isPaused = false;
+        deathCanvas.gameObject.SetActive(false);
+    }
+
+    public bool IsGamePaused()
+    {
+        return isPaused;
     }
 
     public void ResetPlayer()

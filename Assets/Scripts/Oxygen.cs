@@ -55,8 +55,8 @@ public class Oxygen : MonoBehaviour
         deathMessageTimer = DEATH_MESSAGE_DURATION;
         currentOxygen = MAX_OXYGEN;
 
-        // Reset player position and spawn corpse.
-        GAME_MANAGER.ResetPlayer();
+        // Pause game
+        GAME_MANAGER.PauseGame();
     }
     
     public void StopLosingOxygen()
