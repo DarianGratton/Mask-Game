@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
         Spawn();
     }
 
-    void Spawn()
+    public void Spawn()
     {
         Vector3 playerPosition = startingSpawn.transform.position;
         playerPosition.y += spawnOffsetY;        
