@@ -2960,6 +2960,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Key (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5335714562819071344, guid: 4e61404a1a296d84489ff6149cacf2af, type: 3}
+      propertyPath: m_TagString
+      value: WeakKey
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4545,9 +4549,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4126186915591731361, guid: 63d0e0471b58efa4590d625c1238b768, type: 3}
-      propertyPath: sound
-      value: 
-      objectReference: {fileID: 1020324985}
+      propertyPath: keyTag
+      value: WeakKey
+      objectReference: {fileID: 0}
     - target: {fileID: 7235061757902818629, guid: 63d0e0471b58efa4590d625c1238b768, type: 3}
       propertyPath: m_Enabled
       value: 0

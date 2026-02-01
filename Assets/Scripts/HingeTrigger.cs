@@ -6,6 +6,8 @@ public class DoorTrigger : MonoBehaviour
     public PlayerSounds sound;
     public bool isTentacle;
 
+    public string keyTag = "Key";
+
     public void OnTriggerEnter(Collider other)
     {
         // Try to find the Inventory on the object that entered the trigger
@@ -13,12 +15,12 @@ public class DoorTrigger : MonoBehaviour
 
         if (inventory != null)
         {
-            if (inventory.HasKey())
+            if (inventory.HasKey(keyTag))
             {
                 if (door != null)
                 {
                     door.SetActive(false);
-                    inventory.useKey();
+                    inventory.useKey(keyTag);
                     Debug.Log("Door Opened!");
 
                     if (isTentacle)

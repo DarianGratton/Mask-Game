@@ -8,12 +8,14 @@ TagManager:
   - Hinge
   - Ground
   - Key
+  - DeathPlane
   - KeyCard
+  - WeakKey
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 

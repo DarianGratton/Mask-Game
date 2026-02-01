@@ -9,14 +9,25 @@ public class Inventory : MonoBehaviour
 
 
 
-    public void dropleftitem(float offset, Transform playerTransform = null)
+    public void dropleftitem(float offset, Transform dropTransform = null)
     {
-        playerTransform = transform;
+        Vector3 dropPosition;
         GameObject item = inventory[0];
         if(item != null)
         {
             item.SetActive(true);
-            Vector3 dropPosition = playerTransform.position + (playerTransform.forward * offset);
+            if(dropTransform == null)
+            {
+                dropTransform = transform;
+                dropPosition = dropTransform.position + (dropTransform.forward * offset);
+            }
+            else
+            {
+                dropPosition = new Vector3(dropTransform.position.x, dropTransform.position.y + 1.0f, dropTransform.position.z);
+            }
+
+
+            
         
             item.transform.position = dropPosition;
             
@@ -26,27 +37,33 @@ public class Inventory : MonoBehaviour
     
     }
 
-    public void droprightitem(float offset, Transform playerTransform = null)
+    public void droprightitem(float offset, Transform dropTransform = null)
     {
-        playerTransform = transform;
+        Vector3 dropPosition;
         GameObject item = inventory[1];
-
         if(item != null)
         {
             item.SetActive(true);
-            Vector3 dropPosition = playerTransform.position + (playerTransform.forward * offset);
-        
+            if(dropTransform == null)
+            {
+                dropTransform = transform;
+                dropPosition = dropTransform.position + (dropTransform.forward * offset);
+            }
+            else
+            {
+                dropPosition = new Vector3(dropTransform.position.x, dropTransform.position.y + 1.0f, dropTransform.position.z);
+            }
             item.transform.position = dropPosition;
             
             inventory[1] = null;
             Debug.Log("You have dropped " + item.name);
         }
     }
-    public void useKey()
+    public void useKey(string keyTag)
     {
         for(int i = 0; i < 2; i++)
         {
-            if (inventory[i] != null && inventory[i].CompareTag("Key"))
+            if (inventory[i] != null && inventory[i].CompareTag(keyTag))
             {
                 inventory[i] = null;
                 Debug.Log("The key has been used");
@@ -91,11 +108,11 @@ public class Inventory : MonoBehaviour
             Debug.Log("Your Inventory is Full");
         }
     }
-    public bool HasKey()
+    public bool HasKey(string keyTag)
     {
         foreach (GameObject item in inventory)
         {
-            if(item != null && item.CompareTag("Key"))
+            if(item != null && item.CompareTag(keyTag))
             {
                 return true;
             }
