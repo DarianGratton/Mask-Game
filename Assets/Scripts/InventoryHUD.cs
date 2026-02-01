@@ -8,41 +8,67 @@ public class InventoryHUD : MonoBehaviour
 
     public Inventory inventory;
 
-    void Update()
+    public bool leftSpriteOn = false;
+    public bool rightSpriteOn = false;
+
+
+    public Sprite emptySlotSprite;
+
+    void Start()
     {
+        leftHandSlot.sprite = emptySlotSprite;
+        rightHandSlot.sprite = emptySlotSprite;
+    }
+    void Update()
+    {   
         UpdateHandSlots();
     }
 
     void UpdateHandSlots()
     {
-        // Left hand (inventory[0])
-        if (inventory.inventory[0] != null)
+
+    
+    
+        if(inventory.inventory[0] != null)
         {
-            SpriteRenderer sr = inventory.inventory[0].GetComponent<SpriteRenderer>();
-            if (sr != null)
+            if (!leftSpriteOn)
             {
-                leftHandSlot.sprite = sr.sprite;
-                leftHandSlot.enabled = true;
+                Debug.Log("Left hand item picked up!!!!!");
+                leftHandSlot.sprite = inventory.inventory[0].GetComponent<HudSprite>().getHudSprite();
+                leftSpriteOn = true;
             }
+
         }
         else
         {
-            leftHandSlot.enabled = false;
+            if (leftSpriteOn)
+            {
+                leftHandSlot.sprite = emptySlotSprite;
+                leftSpriteOn = false;
+            }
+            
         }
 
-        // Right hand (inventory[1])
-        if (inventory.inventory[1] != null)
+
+        if(inventory.inventory[1] != null)
         {
-            SpriteRenderer sr = inventory.inventory[1].GetComponent<SpriteRenderer>();
-            if (sr != null)
+            if (!rightSpriteOn)
             {
-                rightHandSlot.sprite = sr.sprite;
-                rightHandSlot.enabled = true;
+                Debug.Log("Left hand item picked up!!!!!");
+                rightHandSlot.sprite = inventory.inventory[1].GetComponent<HudSprite>().getHudSprite();
+                rightSpriteOn = true;
             }
+
         }
         else
         {
-            rightHandSlot.enabled = false;
+            if (rightSpriteOn)
+            {
+                rightHandSlot.sprite = emptySlotSprite;
+                rightSpriteOn = false;
+            }
+            
         }
+
     }
 }
