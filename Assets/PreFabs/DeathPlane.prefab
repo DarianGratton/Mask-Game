@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7916311689674611918}
   - component: {fileID: 4883327439030519926}
   - component: {fileID: 4835707551807107940}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: DeathPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,11 +92,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 352445669780421341, guid: 13a77ae8ffad407418cd49db7dab12d2, type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1413707117610163102, guid: 13a77ae8ffad407418cd49db7dab12d2, type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3367510085566815199, guid: 13a77ae8ffad407418cd49db7dab12d2, type: 3}
       propertyPath: m_LocalScale.x

@@ -1,3 +1,4 @@
+using StarterAssets;
 using UnityEngine;
 
 public class DeathPlane : MonoBehaviour
@@ -7,6 +8,9 @@ public class DeathPlane : MonoBehaviour
 
     [SerializeField]
     Inventory inventoryDropScript;
+
+    [SerializeField]
+    FirstPersonController playerController;
 
     private GameObject inventorySpawnLocation;
 
@@ -26,6 +30,9 @@ public class DeathPlane : MonoBehaviour
                 inventoryDropScript.dropleftitem(0.0f, inventorySpawnLocation.transform);
                 inventoryDropScript.droprightitem(0.0f, inventorySpawnLocation.transform);
             }
+
+            // Set player velocity to zero
+            playerController.ResetVelocity();
         }
     }
 }
