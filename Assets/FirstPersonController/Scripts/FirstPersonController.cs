@@ -51,7 +51,10 @@ namespace StarterAssets
 		[Tooltip("How far in degrees can you move the camera down")]
 		public float BottomClamp = -90.0f;
 
+		[Header("Game")]
 		[SerializeField] GameManager gameManager;
+		[SerializeField] Oxygen killScript;
+		[SerializeField] float maxVelocityBeforeDeath = -10.0f;
 
 		// cinemachine
 		private float _cinemachineTargetPitch;
@@ -60,7 +63,7 @@ namespace StarterAssets
 		private float _speed;
 		private float _rotationVelocity;
 		private float _verticalVelocity;
-		private float _terminalVelocity = 53.0f;
+		private float _terminalVelocity = -53.0f;
 
 		// timeout deltatime
 		private float _jumpTimeoutDelta;
@@ -209,8 +212,15 @@ namespace StarterAssets
 		{
 			if (Grounded)
 			{
-				// reset the fall timeout timer
-				_fallTimeoutDelta = FallTimeout;
+                // Kill player if velocity is too high (Gravity is negative).
+                if (_verticalVelocity < maxVelocityBeforeDeath)
+                {
+                    _verticalVelocity = 0f;
+                    killScript.KillPlayer();
+                }
+
+                // reset the fall timeout timer
+                _fallTimeoutDelta = FallTimeout;
 
 				// stop our velocity dropping infinitely when grounded
 				if (_verticalVelocity < 0.0f)
@@ -247,7 +257,7 @@ namespace StarterAssets
 			}
 
 			// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
-			if (_verticalVelocity < _terminalVelocity)
+			if (_verticalVelocity >= _terminalVelocity)
 			{
 				_verticalVelocity += Gravity * Time.deltaTime;
 			}

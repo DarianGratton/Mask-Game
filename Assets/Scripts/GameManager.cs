@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour
 
         Rigidbody playerBody = player.GetComponentInChildren<Rigidbody>();
         playerBody.position = new Vector3(0,0,0);
+        playerBody.linearVelocity = new Vector3(0,0,0);
 
         yield return new WaitForEndOfFrame();
 
