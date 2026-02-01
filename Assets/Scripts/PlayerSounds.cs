@@ -12,7 +12,7 @@ public class PlayerSounds : MonoBehaviour
     public Oxygen oxygen;
     public float panicOxygenPercent = 50f;
 
-    private bool stepSoundPlaying, lowOxygen;
+    private bool stepSoundPlaying, lowOxygen, died;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,22 +23,19 @@ public class PlayerSounds : MonoBehaviour
         heartbeatSource.loop = true;
         breathingSource.loop = true;
 
-        breathingSource.clip = breathingSounds[0];
-        breathingSource.Play();
-        heartbeatSource.clip = heartbeatSounds[0];
-        heartbeatSource.Play();
+        StartPlayerSounds();
     }
 
     // Update is called once per frame
     void Update()
     {
         //If the player started moving recently, start playing walking sounds
-        if (!stepSoundPlaying && playerController.GetTargetSpeed() > 0.1f)
+        if (!stepSoundPlaying && playerController.GetTargetSpeed() > 0.1f && playerController.Grounded)
         {
             StartCoroutine(PlayRandomFootstepLoop());
             stepSoundPlaying = true;
         } //If player stopped moving recently stop the walking sounds
-        else if (stepSoundPlaying && playerController.GetTargetSpeed() < 0.1f)
+        else if (stepSoundPlaying && (playerController.GetTargetSpeed() < 0.1f || !playerController.Grounded))
         {
             stepSoundPlaying = false;
         }
@@ -57,7 +54,7 @@ public class PlayerSounds : MonoBehaviour
 
     IEnumerator PlayRandomFootstepLoop()
     {
-        while (playerController.GetTargetSpeed() > 0.1f) // Infinite loop while walking
+        while (playerController.GetTargetSpeed() > 0.1f && playerController.Grounded && !died) // Infinite loop while walking on the ground
         {
             // Select a random clip and play it
             stepsSource.clip = stepSounds[Random.Range(0, stepSounds.Count)];
@@ -68,5 +65,24 @@ public class PlayerSounds : MonoBehaviour
         }
 
         stepSoundPlaying = false;
+    }
+
+    public void StartPlayerSounds()
+    {
+        died = false;
+
+        breathingSource.clip = breathingSounds[0];
+        breathingSource.Play();
+        heartbeatSource.clip = heartbeatSounds[0];
+        heartbeatSource.Play();
+    }
+
+    public void KillPlayerSounds()
+    {
+        lowOxygen = false;
+        died = true;
+
+        breathingSource.Stop();
+        heartbeatSource.Stop();
     }
 }

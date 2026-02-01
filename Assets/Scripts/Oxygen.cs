@@ -9,6 +9,7 @@ public class Oxygen : MonoBehaviour
 
     public Canvas DEATH_MESSAGE_CANVAS;
     public GameManager GAME_MANAGER;
+    public PlayerSounds PLAYER_SOUNDS;
 
     [SerializeField]
     private float currentOxygen;
@@ -58,6 +59,8 @@ public class Oxygen : MonoBehaviour
     {
         DEATH_MESSAGE_CANVAS.gameObject.SetActive(true);
         deathMessageTimer = DEATH_MESSAGE_DURATION;
+
+        PLAYER_SOUNDS.KillPlayerSounds();
 
         // Pause game
         GAME_MANAGER.PauseGame();
