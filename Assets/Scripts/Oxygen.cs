@@ -49,7 +49,7 @@ public class Oxygen : MonoBehaviour
         
     }
     
-    private void KillPlayer()
+    public void KillPlayer()
     {
         DEATH_MESSAGE_CANVAS.gameObject.SetActive(true);
         deathMessageTimer = DEATH_MESSAGE_DURATION;
