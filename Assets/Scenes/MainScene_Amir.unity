@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 0
+  m_AmbientIntensity: 5.7
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
@@ -196,7 +196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: maxVelocityBeforeDeath
-      value: -30
+      value: -19.2
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_Name
@@ -1221,7 +1221,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4553766719458460619, guid: 5d01b94e65bdf5e409b04166af9290cd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.567
       objectReference: {fileID: 0}
     - target: {fileID: 4553766719458460619, guid: 5d01b94e65bdf5e409b04166af9290cd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2415,7 +2415,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7710456318981474977, guid: 5cfc5760dac0cf8469ef2081af033d41, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.478
       objectReference: {fileID: 0}
     - target: {fileID: 7710456318981474977, guid: 5cfc5760dac0cf8469ef2081af033d41, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2862,7 +2862,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 97892734344839011, guid: 4e61404a1a296d84489ff6149cacf2af, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.034407
+      value: -3.403
       objectReference: {fileID: 0}
     - target: {fileID: 97892734344839011, guid: 4e61404a1a296d84489ff6149cacf2af, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2896,6 +2896,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 258331853668403115, guid: 4e61404a1a296d84489ff6149cacf2af, type: 3}
+      propertyPath: m_Radius
+      value: 0.7232542
+      objectReference: {fileID: 0}
+    - target: {fileID: 258331853668403115, guid: 4e61404a1a296d84489ff6149cacf2af, type: 3}
+      propertyPath: m_Center.x
+      value: 0.14808166
+      objectReference: {fileID: 0}
+    - target: {fileID: 258331853668403115, guid: 4e61404a1a296d84489ff6149cacf2af, type: 3}
+      propertyPath: m_Center.z
+      value: -0.07517254
+      objectReference: {fileID: 0}
     - target: {fileID: 4713349476187634587, guid: 4e61404a1a296d84489ff6149cacf2af, type: 3}
       propertyPath: sound
       value: 
@@ -2909,7 +2921,8 @@ PrefabInstance:
       value: KeyCard
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5806198369244586752, guid: 4e61404a1a296d84489ff6149cacf2af, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 97892734344839011, guid: 4e61404a1a296d84489ff6149cacf2af, type: 3}
       insertIndex: -1
@@ -4684,7 +4697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Oxygen
   MAX_OXYGEN: 100
-  OXYGEN_LOSS_PER_SECOND: 0.1
+  OXYGEN_LOSS_PER_SECOND: 0.46
   DEATH_MESSAGE_DURATION: 2
   IS_LOSING_OXYGEN_ON_START: 1
   DEATH_MESSAGE_CANVAS: {fileID: 1557715478}
@@ -5588,7 +5601,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5335714562819071344, guid: 4e61404a1a296d84489ff6149cacf2af, type: 3}
       propertyPath: m_TagString
-      value: Key
+      value: KeyCard
       objectReference: {fileID: 0}
     - target: {fileID: 6618059494716275130, guid: 4e61404a1a296d84489ff6149cacf2af, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6246,11 +6259,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 97892734344839011, guid: 4e61404a1a296d84489ff6149cacf2af, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.9379056
+      value: -2.295
       objectReference: {fileID: 0}
     - target: {fileID: 97892734344839011, guid: 4e61404a1a296d84489ff6149cacf2af, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 21.085
+      value: 21.21
       objectReference: {fileID: 0}
     - target: {fileID: 97892734344839011, guid: 4e61404a1a296d84489ff6149cacf2af, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6280,6 +6293,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 258331853668403115, guid: 4e61404a1a296d84489ff6149cacf2af, type: 3}
+      propertyPath: m_Radius
+      value: 0.68088794
+      objectReference: {fileID: 0}
+    - target: {fileID: 258331853668403115, guid: 4e61404a1a296d84489ff6149cacf2af, type: 3}
+      propertyPath: m_Center.x
+      value: 0.18088794
+      objectReference: {fileID: 0}
     - target: {fileID: 4713349476187634587, guid: 4e61404a1a296d84489ff6149cacf2af, type: 3}
       propertyPath: sound
       value: 
@@ -6293,7 +6314,8 @@ PrefabInstance:
       value: KeyCard
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5806198369244586752, guid: 4e61404a1a296d84489ff6149cacf2af, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 97892734344839011, guid: 4e61404a1a296d84489ff6149cacf2af, type: 3}
       insertIndex: -1
