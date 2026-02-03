@@ -1,8 +1,5 @@
-using JetBrains.Rider.Unity.Editor;
 using System.Collections.Generic;
 using System.Collections;
-using Unity.VisualScripting;
-using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
