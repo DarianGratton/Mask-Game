@@ -10,6 +10,12 @@ public class StartMenuController : MonoBehaviour
     public Canvas backgroundCanvas;
     public Canvas uiCanvas;
 
+    public void Start()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = false;
+    }
+
     //Start button loads the scene
     public void OnStartClick()
     {
