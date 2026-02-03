@@ -13,7 +13,7 @@ public class StartMenuController : MonoBehaviour
     public void Start()
     {
         Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = false;
+        Cursor.visible = true;
     }
 
     //Start button loads the scene
