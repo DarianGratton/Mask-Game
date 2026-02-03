@@ -39,6 +39,6 @@ public class StartMenuController : MonoBehaviour
 
         yield return new WaitForSeconds(6);
 
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("MainScene_Amir");
     }
 }

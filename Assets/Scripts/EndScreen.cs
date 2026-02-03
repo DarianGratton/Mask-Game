@@ -7,7 +7,7 @@ public class EndScreen : MonoBehaviour
     //restart the program
     public void Restart()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("MainScene_Amir");
     }
 
     // Quit the program
