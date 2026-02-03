@@ -3290,6 +3290,7 @@ GameObject:
   - component: {fileID: 920864857}
   - component: {fileID: 920864856}
   - component: {fileID: 920864855}
+  - component: {fileID: 920864858}
   m_Layer: 0
   m_Name: TransitionAnimation
   m_TagString: Untagged
@@ -3334,7 +3335,7 @@ VideoPlayer:
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 2
   m_AspectRatio: 5
-  m_DataSource: 0
+  m_DataSource: 1
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
@@ -3387,6 +3388,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 920864853}
   m_CullTransparentMesh: 1
+--- !u!114 &920864858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920864853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9375f785351882c48800cdeec48825ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Animations
+  videoFileName: GGJ_2026_EXPLOSIONSCORE (1).mp4
 --- !u!1 &930076220
 GameObject:
   m_ObjectHideFlags: 0
