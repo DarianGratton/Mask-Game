@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour
 
         // Adjust y if the player is in the air
         RaycastHit hit;
-        if (Physics.Raycast(player.transform.position, Vector3.down, out hit, 3, LayerMask.GetMask("Ground")))
+        if (Physics.Raycast(player.transform.position, Vector3.down, out hit, 3, LayerMask.GetMask("Default")))
         {
             spawnPosition.y -= hit.distance - 0.1f;
         }

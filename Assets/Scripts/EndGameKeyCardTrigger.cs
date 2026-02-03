@@ -12,11 +12,14 @@ public class EndGameKeyCardTrigger : MonoBehaviour
         {
             if (playerInventory.hasKeyCard())
             {
-                GameObject keyCardUsed = playerInventory.useKeyCard();
-                Debug.Log("keyCardUsed is equal to: " + keyCardUsed);
-                reactorInventory.addKeyCard(keyCardUsed);
-                
-                Debug.Log("Door Opened!");
+                while (playerInventory.hasKeyCard())
+                {
+                    GameObject keyCardUsed = playerInventory.useKeyCard();
+                    Debug.Log("keyCardUsed is equal to: " + keyCardUsed);
+                    reactorInventory.addKeyCard(keyCardUsed);
+
+                    Debug.Log("Door Opened!");
+                }
             }
             else
             {
