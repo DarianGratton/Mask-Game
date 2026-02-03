@@ -312,6 +312,7 @@ GameObject:
   - component: {fileID: 288674692}
   - component: {fileID: 288674691}
   - component: {fileID: 288674690}
+  - component: {fileID: 288674694}
   m_Layer: 5
   m_Name: BackgroundAnimation
   m_TagString: Untagged
@@ -337,7 +338,7 @@ VideoPlayer:
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 2
   m_AspectRatio: 5
-  m_DataSource: 0
+  m_DataSource: 1
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
@@ -409,6 +410,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &288674694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288674689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9375f785351882c48800cdeec48825ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Animations
+  videoFileName: Main Menu.mp4
 --- !u!1 &351954971
 GameObject:
   m_ObjectHideFlags: 0
@@ -1363,6 +1377,7 @@ GameObject:
   - component: {fileID: 1507416657}
   - component: {fileID: 1507416656}
   - component: {fileID: 1507416655}
+  - component: {fileID: 1507416658}
   m_Layer: 0
   m_Name: TransitionAnimation
   m_TagString: Untagged
@@ -1407,7 +1422,7 @@ VideoPlayer:
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 2
   m_AspectRatio: 5
-  m_DataSource: 0
+  m_DataSource: 1
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
@@ -1460,6 +1475,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1507416653}
   m_CullTransparentMesh: 1
+--- !u!114 &1507416658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507416653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9375f785351882c48800cdeec48825ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Animations
+  videoFileName: CORRUPTIPON.mp4
 --- !u!1 &1859649202
 GameObject:
   m_ObjectHideFlags: 0
